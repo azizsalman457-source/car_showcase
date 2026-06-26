@@ -4,10 +4,18 @@ import { CustomButton,
          Hero,
          Navbar,
          SearchBar,
+         CarCard,
+         CarDetails,
          } from "@/components";
+import { fetchCar } from "@/utils";         
 
 
-export default function Home() {
+export default async function Home() {
+
+  const allCars = await fetchCar();
+  console.log("Cars:", allCars);
+
+  const isDataEmpty=!Array.isArray(allCars) || allCars.length<1|| !allCars;
   return (
     <main className="overflow-hidden bg-white">
       <Navbar />
@@ -16,7 +24,7 @@ export default function Home() {
         <Hero />
         <div className="mt-12 padding-x padding-y text-[20px]
         max-width" id="discover">
-          <h1 className="text-x1 text-2xl text-[52px] font-extrabold pl-4">
+          <h1 className="text-x1 text-2xl text-[52px] font-extrabold ">
             Car Catalogue
           </h1>
           <p>Explore the cars that you might like</p>
@@ -27,9 +35,29 @@ export default function Home() {
            className="home__filter-container">
             <CustomFilters title="fuel"></CustomFilters>
             <CustomFilters title="year"></CustomFilters>
-
           </div>
         </div>
+
+        {!isDataEmpty?
+        (
+          <section>
+            <div className="home__cars-wrapper"></div>
+            {
+              allCars?.map((car)=>(
+              <CarCard 
+               car={car}
+               key={`${car.make}-${car.model}-${car.year}`}
+               />))
+            }
+          </section>
+
+        ):
+        (
+          <div className="home__error-container">
+            <h2 className="text-black text-xl">oops, no result</h2>
+            <p>{allCars?.message}</p>
+          </div>
+        )}
 
       </div>
     </main>

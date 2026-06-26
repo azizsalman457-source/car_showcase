@@ -2,7 +2,7 @@
 'use client';
 import { format } from 'path'
 import React from 'react'
-import SearchManufacturer from "./SearchManufacrurer"
+import SearchManufacturer from "./SearchManufacturer"
 import { useState } from 'react';
 
 export default function SearchBar() {
@@ -14,7 +14,9 @@ export default function SearchBar() {
       onSubmit={handleSearch}>
         <div
           className='search__item'>
-            <SearchManufacturer/>
+            <SearchManufacturer
+             manufacturer={manufacturer}
+             setManufacturer={setManufacturer}/>
 
         </div>
       </form>
