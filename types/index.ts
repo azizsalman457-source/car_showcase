@@ -31,3 +31,18 @@ year:number;
   
 
 }
+export interface FilterProps{
+    manufacturer:string;
+    year:number;
+    fuel:string;
+    model:string;
+
+}
+export interface OptionProps{
+    title:string;
+    value:string;
+}
+export interface CustomFilterProps{
+    title:string;
+    options:OptionProps[];
+}
