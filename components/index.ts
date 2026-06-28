@@ -7,6 +7,7 @@ import CustomFilters from "./CustomFilters";
 import SearchManufacrurer from "./SearchManufacturer";
 import CarCard from "./CarCard";
 import CarDetails from "./CarDetails";
+import ShowMore from "./ShowMore";
 
 
 export{
@@ -19,6 +20,7 @@ export{
     SearchManufacrurer,
     CarCard,
     CarDetails,
+    ShowMore,
 }
 //act as the receptionist and gives you what page.tsx wants from the /file 
 //so that the page.tsx only import {} from components
