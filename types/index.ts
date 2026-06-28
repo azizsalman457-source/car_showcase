@@ -52,3 +52,10 @@ export interface showMoreProps{
     isNext:boolean;
 
 }
+export interface searchParamsProps{
+    manufacturer?: string;
+  year?: string;
+  fuel?: string;
+  model?: string;
+  limit?: string;
+}
